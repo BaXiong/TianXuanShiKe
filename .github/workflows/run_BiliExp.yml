@@ -2,7 +2,7 @@ name: 'run BiliExp'
 
 on:
   schedule:
-    - cron: '10 * * *'
+    - cron: '0 0 10,14,16 * * * *'
   watch:
     types: started
   workflow_dispatch:
