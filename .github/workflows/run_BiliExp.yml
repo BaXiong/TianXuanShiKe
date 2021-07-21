@@ -2,7 +2,7 @@ name: 'run BiliExp'
 
 on:
   schedule:
-    - cron: '0 0 10,14,16 * * * *'
+    - cron: '10 * * *'
   watch:
     types: started
   workflow_dispatch:
@@ -10,9 +10,9 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
-    if: github.repository != 'liulinwei5/tianxuan1' || github.event_name == 'workflow_dispatch'
+    if: github.repository != 'BaXiong/TianXuanShiKe' || github.event_name == 'workflow_dispatch'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actionseckout@v2
       with: 
         repository: ${{ secrets.REPOSITORY }}
         ref: ${{ secrets.REF }}
@@ -23,7 +23,6 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('**/run_in_Actions/requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-
     - name: 执行BiliExp
       run: bash ./run_in_Actions/run_BiliExp.sh
       env:
